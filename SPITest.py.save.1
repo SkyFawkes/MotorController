@@ -1,0 +1,17 @@
+import spidev
+from time import sleep
+import sys
+
+spi = spidev.SpiDev()
+spi.open(0, 0) #SPI bus 0, device 0
+spi.max_speed_hz = 1000000 #max speed of 1MHz
+value = 0
+
+while True:    
+    for data_out in ['S', 'M', 'P'] :
+        data_out = ord(data_out)
+        r = spi.xfer(to_send)
+        print('Sent ' + data_out)
+        print('Received '+ )
+        sleep(1)
+    to_send = [0x00]
