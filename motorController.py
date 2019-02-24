@@ -14,26 +14,20 @@ class motorController():
     def __del__(self):
         self.spi.close()
 
-    def setMotorSpeed(self, speed1,speed2, speed3, speed4): #set the motor speed from -100 to + 100
-        speed1=speed1+128
-        speed2=speed2+128
-        speed3=speed3+128
-        speed4=speed4+128
-        data_out = [ord('S'), speed1,speed2,speed3,speed4, 255] #test of Speed setting
+    def setMotorSpeed(self, speed_r, speed_l): #set the motor speed from -100 to + 100
+        speed_r=speed_r+128
+        speed_l=speed_l+128
+        data_out = [ord('S'), speed_r,speed_l, 255] #test of Speed setting
         recv=self.send(data_out)
         return recv
 
 	       
-    def setDistance(self, distance1, distance2, distance3, distance4, speed1, speed2, speed3, speed4): #set the motor distance as a max speed. all in range of -100 to 100
-        speed1=speed1+128
-        speed2=speed2+128
-        speed3=speed3+128
-        speed4=speed4+128
-        distance1=distance1+128
-        distance2=distance2+128
-        distance3=distance3+128
-        distance4=distance4+128
-        data_out = [ord('D'), distance1, distance2, distance3, distance4, speed1, speed2, speed3, speed4, 255]
+    def setDistance(self, distance_r, distance_l, speed_r, speed_l): #set the motor distance as a max speed. all in range of -100 to 100
+        speed_r=speed_r+128
+        speed_l=speed_l+128
+        distance_r=distance_r+128
+        distance_l=distance_l+128
+        data_out = [ord('D'), distance_r, distance_l, speed_r, speed_l, 255]
         recv=self.send(data_out)
         return recv
 
@@ -59,9 +53,9 @@ class motorController():
 
 if __name__ =="__main__":
     myMC=motorController()
-    r=myMC.setMotorSpeed(0,0,0,0)
+    r=myMC.setMotorSpeed(0,0)
     print('Received', str(r))
-#    r=myMC.setDistance(1,2,3,4,5,6,7,8)
+#    r=myMC.setDistance(1,2,3,4)
 #    print('Received', str(r))
 #    r=myMC.setMaxAccel(100)
 #    print('Received', str(r))
