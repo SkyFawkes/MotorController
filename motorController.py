@@ -53,10 +53,13 @@ class motorController():
 
 if __name__ =="__main__":
     myMC=motorController()
-    r=myMC.setMotorSpeed(0,0)
+    r=myMC.setMotorSpeed(10,10)
     print('Received', str(r))
-#    r=myMC.setDistance(1,2,3,4)
+    r=myMC.setDistance(10,10,50,50)
+    print('Received', str(r))
+#    r=myMC.setMotorSpeed(10,10)
 #    print('Received', str(r))
+
 #    r=myMC.setMaxAccel(100)
 #    print('Received', str(r))
     r=myMC.getADC(5)
